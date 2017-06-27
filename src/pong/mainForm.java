@@ -24,7 +24,7 @@ public class mainForm implements Runnable{
     private PongBall ball = new PongBall(15, 150, 180);
     private Racket racket = new Racket((Width/2)-37, 450, 75, 20);
     
-    private double racketSpeed = 9;
+    private double racketSpeed = 7;
     
     private int kicks = 0;
     private int bestScore = 0;
@@ -83,7 +83,7 @@ public class mainForm implements Runnable{
         Graphics2D g = (Graphics2D) bufferStrategy.getDrawGraphics();
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, Width, Height);
-        g.setColor(Color.LIGHT_GRAY);
+        g.setColor((kicks<=5)?Color.LIGHT_GRAY:Color.RED);
         Paint(g);
         StringBuilder sb = new StringBuilder();
         Formatter formatter = new Formatter(sb);
@@ -110,7 +110,7 @@ public class mainForm implements Runnable{
     }
     
     public boolean gameOver(){
-    	if(ball.getY() >= 435){
+    	if(ball.getY() >= 425){
     		return true;
     	} else
     		return false;
@@ -142,4 +142,3 @@ public class mainForm implements Runnable{
         new Thread(mF).start();
     }
 }
-

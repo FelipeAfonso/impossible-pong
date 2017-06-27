@@ -2,13 +2,14 @@ package pong;
 
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+import java.util.Random;
 
 public class PongBall {
     private final int Radius;
     private int positionX;
     private int positionY;
-    private int speedX = 1;
-    private int speedY = 1;
+    private int speedX = (new Random().nextBoolean())?1:-1;
+    private int speedY = new Random().nextInt(1)+1;
     
     public PongBall(int r, int x, int y){
         this.Radius = r;
@@ -18,6 +19,7 @@ public class PongBall {
     
     public void Paint(Graphics2D g){
         g.fillOval(positionX, positionY, Radius*2, Radius*2);
+    	//g.drawImage()
     }
     
     public Rectangle getBounds(){
@@ -64,8 +66,8 @@ public class PongBall {
     }
     
     public void resetBall(){
-    	this.speedX = 1;
-    	this.speedY = 1;
+    	this.speedX = (new Random().nextBoolean())?1:-1;
+    	this.speedY = new Random().nextInt(1)+1;
     	this.positionX = 150;
     	this.positionY = 180;
     }
